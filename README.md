@@ -10,9 +10,9 @@ I've manage to create one test so far. Structure is based on my previous work.
 2. `pip install -r requirements.txt`
 
 ### Run
-`pytest --browser chrome`
-or
 `pytest --browser firefox`
+or
+`pytest --browser chrome`
 
 Proper webdriver would be downloaded in the background
 
