@@ -29,6 +29,24 @@ class PageObject:
             raise
         return self.driver.get_elm(xpath=xpath)
 
+    def get_element_by_name(self, name, timeout_in_seconds=None) -> WebElement:
+        try:
+            self.driver.wait_for_element_show(name=name, timeout=timeout_in_seconds)
+        except TimeoutException:
+            self.log.error(
+                'Element with name =  "%(name)s" is not visible. Timeout: %(timeout)s seconds.',
+                dict(
+                    name=name,
+                    timeout=(
+                        timeout_in_seconds
+                        if timeout_in_seconds
+                        else self.driver.default_wait_timeout
+                    ),
+                ),
+            )
+            raise
+        return self.driver.get_elm(name=name)
+
     def is_element_visible_by_xpath(self, xpath, timeout_in_seconds=None) -> bool:
         if not timeout_in_seconds:
             timeout_in_seconds = 1

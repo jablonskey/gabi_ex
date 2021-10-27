@@ -15,7 +15,7 @@ def pytest_addoption(parser):
         action="store",
         type=str,
         choices=["chrome", "firefox"],
-        default="firefox",
+        default="chrome",
     )
 
 
