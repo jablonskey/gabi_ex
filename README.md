@@ -14,5 +14,7 @@ I've manage to create one test so far. Structure is based on my previous work.
 or
 `pytest --browser chrome`
 
+To run in headless mode add `--headless` argument.
+
 Proper webdriver would be downloaded in the background
 
