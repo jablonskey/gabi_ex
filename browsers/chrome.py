@@ -22,6 +22,7 @@ class Chrome(WebBrowser):
                 "traceCategories": "browser,devtools.timeline,devtools,network",
             },
         )
+        chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
         capabilities = webdriverwrapper.DesiredCapabilities().CHROME.copy()
         capabilities["goog:loggingPrefs"] = {"performance": "ALL"}
