@@ -79,6 +79,7 @@ class NamePageLocators:
 
 
 class NamePage(BasePage):
+    URL_SUFFIX: str = "/sign-up/name"
 
     def __init__(self, browser, base_url):
         super().__init__(browser, base_url)
