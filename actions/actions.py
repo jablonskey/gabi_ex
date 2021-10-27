@@ -3,8 +3,13 @@ import logging
 import pytest_check as check
 
 from browsers import WebBrowser
-from pages.base_page import InsuranceChoicePage, NamePage, AddressPage, HdyhauPage, \
-    EmailPage, PhonePage, VerificationPage
+from pages.verification_page import VerificationPage
+from pages.phone_page import PhonePage
+from pages.email_page import EmailPage
+from pages.hdyhau_page import HdyhauPage
+from pages.address_page import AddressPage
+from pages.name_page import NamePage
+from pages.insurance_page import InsuranceChoicePage
 
 
 class Actions:
