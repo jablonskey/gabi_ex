@@ -48,3 +48,26 @@ def test_full_signup_flow(browser, base_url):
     actions.fill_temp_phone_number_and_proceed()
     actions.check_if_verification_reached()
 
+
+def test_email_address_validation(browser, base_url):
+    actions = Actions(browser, base_url)
+
+    actions.email_page.navigate_to()
+
+    actions.email_page.email_form().send_keys("A")
+    actions.email_page.drop_focus_from_form()
+    check.equal(actions.email_page.email_form_invalid_info().text,
+                "Invalid email address.")
+
+    actions.email_page.email_form().clear()
+    check.equal(actions.email_page.email_form_invalid_info().text,
+                "Not valid.")
+
+    actions.email_page.email_form().send_keys(
+        actions.email_page.VALID_BUT_INCORRECT_EMAIL_ADDRESS)
+    actions.email_page.next_button().click()
+    check.is_true(
+        "Please check if this email is correct. Click here if it`s correct." in actions.email_page.email_doublecheck_info().text)
+    actions.email_page.email_form().clear()
+
+    actions.fill_temp_email_address_and_proceed()
