@@ -4,7 +4,7 @@ from pages.base_page import BaseLocators, BasePage
 
 
 class AddressPageLocators(BaseLocators):
-    address_search_first_result_xpath = "//div[contains(@class,'SmartyStreetsAutocomplete')]/button[1]//div[contains(@class,'HoverIndicator')]"
+    address_search_first_result_xpath = "//div[contains(@class,'SmartyStreetsAutocomplete')]/button//div[contains(@class,'HoverIndicator')]"
     address_search_modal_xpath = "//div[contains(@class,'modalContent') and contains(@class,'GabiAddressField')]"
     address_form_xpath = "//input[@name='address_field_input']"
 
