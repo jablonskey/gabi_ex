@@ -17,17 +17,20 @@ def pytest_addoption(parser):
         choices=["chrome", "firefox"],
         default="firefox",
     )
+    parser.addoption("--headless", action="store_true", default=False)
 
 
 @pytest.fixture(scope="function")
 def browser(request):
     browser_parameter = request.config.option.browser
     logging.info(f'option.browser = "{browser_parameter}"')
+    headless_flag = request.config.option.headless
+    logging.info(f'option.headless = "{headless_flag}"')
 
     if browser_parameter == "chrome":
-        session_browser = Chrome()
+        session_browser = Chrome(headless_flag)
     else:
-        session_browser = Firefox()
+        session_browser = Firefox(headless_flag)
 
     session_browser.driver().maximize_window()
     session_browser.driver().implicitly_wait(DEFAULT_IMPLICIT_WAIT_TIME)

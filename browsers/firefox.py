@@ -10,8 +10,9 @@ from browsers import WebBrowser
 class Firefox(WebBrowser):
     """Representation of a firefox web browser."""
 
-    def __init__(self) -> None:
+    def __init__(self, headless_flag) -> None:
         firefox_options = Options()
+        firefox_options.headless = headless_flag
         firefox_options.log.level = "trace"
 
         self.firefox = webdriverwrapper.Firefox(
